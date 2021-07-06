@@ -34,13 +34,13 @@ class App extends Component {
     });
   };
 
-  filterContacts = () => {
-    const { filter, contacts } = this.state;
-    const normalizeFilter = filter.toLowerCase();
-    return contacts.filter(({ name }) => {
-      return name.toLowerCase().includes(normalizeFilter);
-    });
-  };
+  // filterContacts = () => {
+  //   const { filter, contacts } = this.state;
+  //   const normalizeFilter = filter.toLowerCase();
+  //   return contacts.filter(({ name }) => {
+  //     return name.toLowerCase().includes(normalizeFilter);
+  //   });
+  // };
 
   deleteContact = id => {
     this.setState(({ contacts }) => ({
