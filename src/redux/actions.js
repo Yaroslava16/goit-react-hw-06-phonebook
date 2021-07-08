@@ -1,20 +1,27 @@
-export const addContact = value => {
+import shortid from 'shortid';
+
+const addContact = data => {
   return {
     type: 'contact/ADD_CONTACT',
-    payload: value,
+    payload: {
+      ...data,
+      id: shortid.generate(),
+    },
   };
 };
 
-export const deleteContact = value => {
+const deleteContact = id => {
   return {
     type: 'contact/DELETE_CONTACT',
-    payload: value,
+    payload: id,
   };
 };
 
-export const filter = value => {
+const filter = value => {
   return {
     type: 'contact/FILTER_CONTACT',
     payload: value,
   };
 };
+
+export { addContact, deleteContact, filter };

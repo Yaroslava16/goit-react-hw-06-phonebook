@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from '../Contacts/Contacts.module.css';
+import { deleteContact } from '../../redux/actions';
 
-const Contacts = ({ contacts, onDelete }) => (
+const Contacts = ({ contacts }) => (
   <>
     <ul className={styles.list}>
       {contacts.map(({ name, id, number }) => (
@@ -10,7 +12,7 @@ const Contacts = ({ contacts, onDelete }) => (
           <span>
             {name}: {number}
           </span>
-          <button className={styles.btn} onClick={() => onDelete(id)}>
+          <button className={styles.btn} onClick={deleteContact}>
             Delete
           </button>
         </li>
@@ -30,4 +32,14 @@ Contacts.propTypes = {
   onDelete: PropTypes.func.isRequired,
 };
 
-export default Contacts;
+const mapStateToProps = state => {
+  return {
+    contacts: state.contacts.items,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return { onDelete: () => dispatch(deleteContact()) };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts);
