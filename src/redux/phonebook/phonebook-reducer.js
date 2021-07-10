@@ -2,10 +2,6 @@ import { combineReducers } from 'redux';
 import { ADD_CONTACT, DELETE_CONTACT, FILTER_CONTACT } from './phonebook-types';
 import shortid from 'shortid';
 
-const filterInitialState = {
-  filter: '',
-};
-
 const contactsInitialState = [
   { id: shortid.generate(), name: 'Rosie Simpson', number: '459-12-56' },
   { id: shortid.generate(), name: 'Hermione Kline', number: '443-89-12' },
@@ -26,10 +22,10 @@ const сontactsReduser = (state = contactsInitialState, { type, payload }) => {
   }
 };
 
-const filterReduser = (state = filterInitialState, { type }) => {
+const filterReduser = (state = '', { type, payload }) => {
   switch (type) {
     case FILTER_CONTACT:
-      return {};
+      return payload;
 
     default:
       return state;
