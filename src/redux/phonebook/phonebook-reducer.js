@@ -12,23 +12,13 @@ const contactsInitialState = [
   { id: shortid.generate(), name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-const addContactReduser = (state = contactsInitialState, { type, payload }) => {
-  switch (type) {
-    case 'contact/ADD_CONTACT':
-      return [payload, ...state];
-
-    default:
-      return state;
-  }
-};
-
-const deleteContactsReduser = (
-  state = contactsInitialState,
-  { type, payload },
-) => {
+const сontactsReduser = (state = contactsInitialState, { type, payload }) => {
   switch (type) {
     case 'contact/DELETE_CONTACT':
       return state.filter(item => item.id !== payload);
+
+    case 'contact/ADD_CONTACT':
+      return [payload, ...state];
 
     default:
       return state;
@@ -46,8 +36,7 @@ const filterReduser = (state = filterInitialState, { type }) => {
 };
 
 const phonebookReduser = combineReducers({
-  newContact: addContactReduser,
-  contacts: deleteContactsReduser,
+  contacts: сontactsReduser,
   filter: filterReduser,
 });
 

@@ -7,11 +7,6 @@ import styles from './App.module.css';
 // import shortid from 'shortid';
 
 class App extends Component {
-  // addContact = ({ name, number }) => {
-  //   const contact = { name, number, id: shortid.generate() };
-  //   this.setState(({ contacts }) => ({ contacts: [...contacts, contact] }));
-  // };
-
   render() {
     // const { filter } = this.state;
     return (

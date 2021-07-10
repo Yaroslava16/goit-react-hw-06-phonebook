@@ -78,7 +78,7 @@ class Form extends Component {
 }
 
 const mapStateToProps = state => {
-  return { contacts: state.phonebook.newContact };
+  return { contacts: state.phonebook.contacts };
 };
 
 const mapDispatchToProps = dispatch => {
