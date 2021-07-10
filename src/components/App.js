@@ -3,7 +3,6 @@ import Contacts from './Contacts/Contacts';
 import Form from './Form/Form';
 import Filter from './Filter/Filter';
 import styles from './App.module.css';
-// import shortid from 'shortid';
 
 class App extends Component {
   render() {
@@ -13,7 +12,6 @@ class App extends Component {
         <Form />
         <h2 className={styles.secondTitle}>Contacts</h2>
         <Filter />
-        {/* <Contacts contacts={this.getVisibleContacts()} /> */}
         <Contacts />
       </div>
     );
