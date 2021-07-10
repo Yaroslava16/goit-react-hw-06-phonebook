@@ -1,8 +1,13 @@
+import {
+  ADD_CONTACT,
+  DELETE_CONTACT,
+  FILTER_CONTACT,
+} from '../phonebook/phonebook-types';
 import shortid from 'shortid';
 
 const addContact = data => {
   return {
-    type: 'contact/ADD_CONTACT',
+    type: ADD_CONTACT,
     payload: {
       ...data,
       id: shortid.generate(),
@@ -12,14 +17,14 @@ const addContact = data => {
 
 const deleteContact = id => {
   return {
-    type: 'contact/DELETE_CONTACT',
+    type: DELETE_CONTACT,
     payload: id,
   };
 };
 
 const filter = value => {
   return {
-    type: 'contact/FILTER_CONTACT',
+    type: FILTER_CONTACT,
     payload: value,
   };
 };

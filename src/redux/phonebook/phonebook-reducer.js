@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { ADD_CONTACT, DELETE_CONTACT, FILTER_CONTACT } from './phonebook-types';
 import shortid from 'shortid';
 
 const filterInitialState = {
@@ -14,10 +15,10 @@ const contactsInitialState = [
 
 const сontactsReduser = (state = contactsInitialState, { type, payload }) => {
   switch (type) {
-    case 'contact/DELETE_CONTACT':
+    case DELETE_CONTACT:
       return state.filter(item => item.id !== payload);
 
-    case 'contact/ADD_CONTACT':
+    case ADD_CONTACT:
       return [payload, ...state];
 
     default:
@@ -27,7 +28,7 @@ const сontactsReduser = (state = contactsInitialState, { type, payload }) => {
 
 const filterReduser = (state = filterInitialState, { type }) => {
   switch (type) {
-    case 'contact/FILTER_CONTACT':
+    case FILTER_CONTACT:
       return {};
 
     default:
