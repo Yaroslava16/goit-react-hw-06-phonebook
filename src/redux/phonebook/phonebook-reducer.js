@@ -1,5 +1,6 @@
+import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import { ADD_CONTACT, DELETE_CONTACT, FILTER_CONTACT } from './phonebook-types';
+import { addContact, deleteContact, filter } from './phonebook-actions';
 import shortid from 'shortid';
 
 const contactsInitialState = [
@@ -9,32 +10,19 @@ const contactsInitialState = [
   { id: shortid.generate(), name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-const сontactsReduser = (state = contactsInitialState, { type, payload }) => {
-  switch (type) {
-    case DELETE_CONTACT:
-      return state.filter(item => item.id !== payload);
-
-    case ADD_CONTACT:
-      return [payload, ...state];
-
-    default:
-      return state;
-  }
-};
-
-const filterReduser = (state = '', { type, payload }) => {
-  switch (type) {
-    case FILTER_CONTACT:
-      return payload;
-
-    default:
-      return state;
-  }
-};
-
-const phonebookReduser = combineReducers({
-  contacts: сontactsReduser,
-  filter: filterReduser,
+const сontactsReducer = createReducer(contactsInitialState, {
+  [addContact]: (state, { payload }) => [payload, ...state],
+  [deleteContact]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
 });
 
-export default phonebookReduser;
+const filterReducer = createReducer('', {
+  [filter]: (_, { payload }) => payload,
+});
+
+const phonebookReducer = combineReducers({
+  contacts: сontactsReducer,
+  filter: filterReducer,
+});
+
+export default phonebookReducer;
